@@ -21,6 +21,11 @@ class Game_State:
     def init_game(self,user):
             self.set_currentUser(user)
     
+    def check_exist(self,position):
+        if self.board.board_position[position-1] == 'X' or self.board.board_position[position-1] == 'O':
+            return False
+        return True
+
     def check_win(self):
         if self.check_horizontal(self.current_turn.piece_type) or self.check_vertical(self.current_turn.piece_type) or self.check_diagonal(self.current_turn.piece_type):
             return True,self.current_turn

@@ -20,6 +20,8 @@ gstate.init_game(user1) #start the game with this user
 
 while gameOver!=True:
     user_input = int(input('Please enter your input {}: '.format(gstate.current_turn.name)))
+    while gstate.check_exist(user_input) !=True:
+        user_input = int(input('This position is not avaiable! Please reenter your peiece position {}: '.format(gstate.current_turn.name)))
     b.insertPieces(user_input,gstate.current_turn.piece_type)
     b.drawBoard()
     gameOver,winner=gstate.check_win()
