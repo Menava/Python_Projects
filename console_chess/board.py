@@ -1,8 +1,8 @@
 import os
 
 class Board:
-    board_row=['a','b','c','d','e','f','g','h']
-    board_col=[1,2,3,4,5,6,7,8]
+    board_col=['a','b','c','d','e','f','g','h']
+    board_row=[8,7,6,5,4,3,2,1]
     board_position={}
 
     def __init__(self):
@@ -11,19 +11,22 @@ class Board:
     def draw_board(self):
         for i in self.board_row:
             for j in self.board_col:
-                if self.board_position[i+str(j)]!=None:
-                    print(self.board_position[i+str(j)],end='')
+                if self.board_position[j+str(i)]!=None:
+                    print(self.board_position[j+str(i)],end=' ')
                 else:
-                    print(self.board_position[i+str(j)].key(),end='')
+                    print(j+str(i),end=' ')
             print('',end='\n')
     
     def fill_positions(self):
         for i in self.board_row:
             for j in self.board_col:
-                self.board_position[i+str(j)]=''
+                self.board_position[j+str(i)]=None
     
     def set_pieces(self):
-        pass
+        # for i in dict(list(self.board_position.items())[:16]): #add pieces for right side
+        #     print(i)
+        for i in dict(list(self.board_position.items())[:]): #add pieces for right side
+            print(i)
     
     def clear_console(self):
         os.system('cls')

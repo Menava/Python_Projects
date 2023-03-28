@@ -8,4 +8,5 @@ queen1=Queen('Queen','Queen','left','Black')
 
 board.fill_positions()
 board.draw_board()
+board.set_pieces()
 # board.clear_console()
