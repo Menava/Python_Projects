@@ -73,9 +73,9 @@ class Board:
     def move_piece(self,current_location,new_location):
         if self.check_input(current_location,new_location):
             if new_location in self.board_position[current_location].possible_moves(current_location,self.board_position,self.board_col,self.board_row):
-                print('True')
+                pass
             else:
-                print('False')
+                pass
             self.board_position[new_location]=self.board_position[current_location]
             self.board_position[current_location]=None
     
@@ -84,7 +84,10 @@ class Board:
     
     def check_input(self,current_location,new_location):
         if current_location in self.board_position.keys() and new_location in self.board_position.keys():
-            return True
+            if self.board_position[current_location]!=None:
+                return True
+            else:
+                return False
         return False
         
 

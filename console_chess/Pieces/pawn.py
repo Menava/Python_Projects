@@ -18,18 +18,16 @@ class Pawn(Piece):
 
         calculated_moves.append(outcome)
 
-        returned_moves=self.takable_positions(outcome,board_position,board_col,board_row)
+        returned_moves=self.takable_positions(outcome,board_position,board_col,board_row,current_location)
 
         calculated_moves.extend(returned_moves)
-
-        print(calculated_moves)
         
         return calculated_moves
     
     def split_input(self,input):
         return super().split_input(input)
     
-    def takable_positions(self,outcome,board_position,board_col,board_row):
+    def takable_positions(self,outcome,board_position,board_col,board_row,current_location):
         splited_outcome=self.split_input(outcome)
         col_location=int(board_col.index(splited_outcome[0]))
         if col_location==0:
@@ -39,8 +37,12 @@ class Pawn(Piece):
         else:
             temp_moves=[board_col[col_location-1]+splited_outcome[1],board_col[col_location+1]+splited_outcome[1]]
 
-        for i in temp_moves:
-            print(board_position[i])
+        for i in list(temp_moves):
+            if board_position[i]==None:
+                temp_moves.remove(i)
+            elif board_position[i].color==board_position[current_location].color:
+                temp_moves.remove(i)
+            
         return temp_moves
     
     
