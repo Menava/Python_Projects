@@ -2,11 +2,17 @@ from board import Board
 from Pieces import *
 
 board=Board()
-pawn1=Pawn('Pawn 1','Pawn','left','Black')
-king1=King('King','King','left','Black')
-queen1=Queen('Queen','Queen','left','Black')
+gameOver=False
+
+black_pieces=board.create_pieces('L','B')
+white_pieces=board.create_pieces('R','W')
 
 board.fill_positions()
-board.draw_board()
-board.set_pieces()
+board.set_pieces(black_pieces,white_pieces)
+
+while gameOver!=True:
+    board.draw_board()
+    user_input = input("Enter poisitons:")
+    locations=user_input.split(' ')
+    board.move_piece(locations[0],locations[1])
 # board.clear_console()

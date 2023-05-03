@@ -1,3 +1,3 @@
 from .piece import Piece
 class King(Piece):
-    pass
+    piece_type='king'
